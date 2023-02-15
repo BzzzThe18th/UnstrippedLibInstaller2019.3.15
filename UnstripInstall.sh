@@ -22,8 +22,9 @@ unzip -o "temp1.zip" -d "UnstrippedLibs"
 unzip -o "temp2.zip" -d "UnstrippedLibs"
 
 chmod -R +rw UnstrippedLibs
-sed -itemp 's/dllSearchPathOverride=\(.*\)/dllSearchPathOverride=UnstrippedLibs/' doorstop_config.ini
+sed --in_place=.temp 's/dllSearchPathOverride=\(.*\)/dllSearchPathOverride=UnstrippedLibs/' doorstop_config.ini
 
 rm "temp1.zip"
 rm "temp2.zip"
+rm "doorstop_config.ini.temp"
 cp "UnstrippedLibs/UnityEngine.TextCoreModule.dll" "Gorilla Tag_Data/Managed"
